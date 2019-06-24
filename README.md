@@ -5,8 +5,8 @@ Design a command line search application to query structured/semi-structured dat
 
 See [Introduction](https://github.com/gowtham06/ZenDesk/wiki/Introduction) for more details on the project
 
-For installation and build details, refer to [Installation] (https://github.com/gowtham06/ZenDesk/wiki/Installation)
+Checkout [Deisgn](https://github.com/gowtham06/ZenDesk/wiki/Desgin) for more details on architectural design of the project
 
-For desgin, refer to [Napin Diagram] (https://github.com/gowtham06/ZenDesk/wiki/Desgin)
+Please refer to  [Installation](https://github.com/gowtham06/ZenDesk/wiki/Installation) for more details pre-requisites and installations.
 
-For details regarding testing refer to [Testing] (https://github.com/gowtham06/ZenDesk/wiki/Testing)
+For testing, Please refer to  [Testing](https://github.com/gowtham06/ZenDesk/wiki/Testing) for more details.
