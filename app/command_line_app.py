@@ -4,6 +4,7 @@ from os import listdir
 from os.path import isfile, join
 
 def print_rows(json_documents):
+    #print the rows in required format
     try:
         nos_documents=len(json_documents)
         for i in range(nos_documents):
@@ -16,6 +17,7 @@ def print_rows(json_documents):
         return False
         
 def print_searchable_fields(mongoConnect):
+    #function to print the searchable field
     try:
         field_map=mongoConnect.get_collection_field_map()
         for key,value in field_map.items():
@@ -29,8 +31,10 @@ def print_searchable_fields(mongoConnect):
             
         
 def search_menu(mongoConnect):
+    #function to implement the search menu
     try:
-        input_2=input("""Select 1) Users or 2) Tickets" or 3) Organizations """)
+        print("""Select 1) Users or 2) Tickets" or 3) Organizations """)
+        input_2=input()
         collection_list=mongoConnect.get_collecton_list()
         collection_dict=mongoConnect.get_collection_field_map()
         if input_2 in ["1","2","3"]:
@@ -40,12 +44,14 @@ def search_menu(mongoConnect):
                 collection_name=[item for item in collection_list if item.lower()=="Tickets".lower()][0]
             else:
                 collection_name=[item for item in collection_list if item.lower()=="Organizations".lower()][0]
-
-            search_term=input("""Enter search term""").strip()
+            print("""Enter search term""")
+            search_term=input()
             if search_term not in collection_dict[collection_name]:
-                input("""Invalid, option, Press 'Enter' to continue""")
+                print("""Invalid, option, Press 'Enter' to continue""")
+                input()
             else:
-                search_value=input("""Enter search value""")
+                print("""Enter search value""")
+                search_value=input()
                 documents=mongoConnect.execute_query(collection_name,search_term,search_value)
                 if not documents:
                     print("Searching %s for %s with a value of %s"%(collection_name,search_term,search_value))
@@ -54,11 +60,13 @@ def search_menu(mongoConnect):
                     print_rows(documents)
                 
         else:
-            input("""Invalid, option, Press 'Enter' to continue""")
+            print("""Invalid, option, Press 'Enter' to continue""")
+            input()
     except Exception:
         return False
         
 def command_line():
+    # wrapper function for command line app
     try:
         db_name="zendesk"
         port=27017
@@ -67,9 +75,13 @@ def command_line():
         execute_flag=True
     
         print("Welcome to Zendesk Search")
-        input("""Type 'quit' to exit at anyt time, Press 'Enter' to continue""")
+        print("""Type 'quit' to exit at any time, Press 'Enter' to continue""")
+        input_temp=input()
+        if input_temp=="quit":
+            execute_flag=False
         while execute_flag:
-            input_1=input("""Select search options:\n\t\t* Press 1 to search Zendesk\n\t\t* Press 2 to view list of searchable fields\n\t\t* Type 'quit' to exit""")
+            print("""Select search options:\n\t\t* Press 1 to search Zendesk\n\t\t* Press 2 to view list of searchable fields\n\t\t* Type 'quit' to exit""")
+            input_1=input()
             if input_1=='quit':
                 execute_flag=False
                 break
